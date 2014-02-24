@@ -10,5 +10,10 @@ Feature: Answering questions
 
   Scenario: Answering a question correctly
     Given I am on the page for the blue sky question
-    When I press "true"
+    When I press "True"
     Then I should see "Correct"
+
+  Scenario: Answering a question incorrectly
+    Given I am on the page for the blue sky question
+    When I press "False"
+    Then I should see "Incorrect"
