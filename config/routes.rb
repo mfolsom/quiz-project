@@ -1,5 +1,6 @@
 QuizProject::Application.routes.draw do
   resources :questions
+  root 'questions#generate_question'
 
   post 'questions/:id/result' => 'questions#show_result', as: :show_result
   

@@ -12,4 +12,9 @@ class QuestionsController < ApplicationController
     end
     @question = Question.find(params[:id])
   end
+
+  def generate_question
+    @question = Question.find(1)
+    render :show
+  end
 end
