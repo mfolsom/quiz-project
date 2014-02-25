@@ -1,7 +1,7 @@
 QuizProject::Application.routes.draw do
   resources :questions
 
-  get 'questions/:id/result' => 'questions#show_result'
+  post 'questions/:id/result' => 'questions#show_result', as: :show_result
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

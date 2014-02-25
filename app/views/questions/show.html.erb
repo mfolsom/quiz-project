@@ -1,5 +1,6 @@
 <p><%= @question.text %></p>
-<form method="get" action="/questions/<%= @question.id %>/result">
+<%= form_tag(show_result_path(@question)) do %>
+<!-- <form method="post" action="/questions/<%= @question.id %>/result"> -->
   <input type="submit" name="True" value="True" />
   <input type="submit" name="False" value="False" />
-</form>
+<% end %>
