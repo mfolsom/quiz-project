@@ -5,6 +5,7 @@
 # files.
 
 require 'cucumber/rails'
+require 'cucumber/rspec/doubles'
 require File.dirname(__FILE__) + '/seeds'
 
 # Capybara defaults to CSS3 selectors rather than XPath.

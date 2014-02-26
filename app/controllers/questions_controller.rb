@@ -14,7 +14,12 @@ class QuestionsController < ApplicationController
   end
 
   def generate_question
-    @question = Question.find(1)
+    @question = Question.order("RANDOM()").first
     render :show
   end
+
+  def self.code(code)
+  find_by(code: code)
+  end
+
 end

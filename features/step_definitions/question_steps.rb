@@ -27,9 +27,15 @@ Then(/^I should see "([^\"]*)"$/) do |content|
 end
 
 Then(/^I should see the first question$/) do
-  expect(page).to have_content("Is the sky blue?")
+  @question = Question.first
+  expect(page).to have_content(@question.text)
 end
 
 Then(/^I should be on the homepage$/) do
   expect(current_path).to eq(root_path)
+end
+
+Then(/^I should not see the question I just answered$/) do
+  @question = Question.first
+  expect(page).not_to have_content(@question.text)
 end
