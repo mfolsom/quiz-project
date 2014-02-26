@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   end
 
   def generate_question
-    @question = Question.order("RANDOM()").first
+    @question = Question.random
     render :show
   end
 

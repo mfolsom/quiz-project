@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Question do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should be able to generate a random question" do
+    expect(Question).to receive(:order).with("RANDOM()").and_return([Question.first])
+    expect(Question.random).to eq(Question.first)
+  end
 end
