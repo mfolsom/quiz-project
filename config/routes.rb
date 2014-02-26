@@ -1,4 +1,5 @@
 QuizProject::Application.routes.draw do
+  resources :users
   resources :questions
   root 'questions#generate_question'
 
