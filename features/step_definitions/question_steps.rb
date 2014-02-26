@@ -39,3 +39,17 @@ Then(/^I should not see the question I just answered$/) do
   @question = Question.first
   expect(page).not_to have_content(@question.text)
 end
+
+Given(/^I am on the new question page$/) do
+  visit new_question_path
+end
+
+Given(/^I fill in the form$/) do
+  fill_in("question[text]", :with => "Is a bushel a unit of measure?")
+  choose('question_answer_false')
+end
+
+Then(/^the question should be in the database$/) do
+  @new_question = Question.find_by(text: "Is a bushel a unit of measure?")
+  expect(@new_question.answer).to be_false
+end

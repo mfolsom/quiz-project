@@ -18,8 +18,19 @@ class QuestionsController < ApplicationController
     render :show
   end
 
-  def self.code(code)
-  find_by(code: code)
+  def new
+    @question = Question.new
   end
+
+  def create
+    Question.create(question_params)
+    redirect_to root_url, notice: "Question added!"
+  end
+
+private
+
+ def question_params
+  params.require(:question).permit(:text, :answer)
+ end
 
 end

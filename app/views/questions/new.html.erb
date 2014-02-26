@@ -1,0 +1,9 @@
+
+<%= form_for @question, url: {action: "create"} do |f| %>
+  <%= f.text_area :text %>
+  <%= f.radio_button(:answer, "true") %>
+  <%= f.label(:answer_true, "True") %>
+  <%= f.radio_button(:answer, "false") %>
+  <%= f.label(:answer_false, "False") %>
+  <%= f.submit "Create" %> 
+<% end %>
