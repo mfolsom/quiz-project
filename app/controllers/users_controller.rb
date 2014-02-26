@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if user.save
       redirect_to root_path, notice: "Welcome #{user.username}!"
     else
-      redirect_to new_user_path, alert: "Non-matching passwords"
+      redirect_to new_user_path, error: user.errors.keys[0].to_s.capitalize.gsub('_', ' ') + ' ' + user.errors.values[0][0]
     end
   end
 
