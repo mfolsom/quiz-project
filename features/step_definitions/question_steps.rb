@@ -84,9 +84,20 @@ Given(/^there are no questions in the database$/) do
   Question.destroy_all
 end
 
+Given(/^there is only one question in the database$/) do
+  Question.destroy_all
+  Question.create(text: 'Is the sky blue?', answer: true)
+end
+
 When(/^I answer a question$/) do
  visit question_path(1)
  click_button("True")
+end
+
+When(/^I answer that question$/) do
+  visit '/'
+  click_button("True")
+  click_link("Next")
 end
 
 Then(/^my answer should be tracked in the database$/) do

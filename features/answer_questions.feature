@@ -25,3 +25,9 @@ Feature: Answering questions
      When I answer a question
      Then my answer should be tracked in the database
 
+  Scenario: Not seeing an answered question
+    Given I have already signed up
+    And there is only one question in the database
+    When I answer that question
+    Then I should see "No questions yet, sorry."
+

@@ -12,8 +12,12 @@ class Question < ActiveRecord::Base
   end
 
   def self.filter(random_questions, user)
-    possible_questions = random_questions.select {|question| question.user != user}
+    possible_questions = random_questions.select { |question| question.user != user && hasnt_been_answered(question,user) }
     possible_questions.empty? ? nil : possible_questions.first
+  end
+
+  def self.hasnt_been_answered(question,user)
+    question.answers.all? { |answer| answer.user != user }
   end
 
 end
