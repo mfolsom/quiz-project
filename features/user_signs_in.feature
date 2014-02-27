@@ -23,3 +23,11 @@ Feature: User signs in
     And press "Sign In"
     Then I should be on the sign in page
     And I should see "Invalid username or password"
+
+ Scenario: and signs out
+   Given I have already signed up
+   And I have already signed in
+   And I am on the homepage
+   And I click "Sign Out"
+   Then I should be on the homepage
+   And I should not see a welcome message
