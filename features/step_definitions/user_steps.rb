@@ -34,6 +34,10 @@ Then(/^I should not be signed up$/) do
   expect(User.find_by(username: "riepenhausen")).to be_nil
 end
 
+Then(/^I should be signed in$/) do
+  expect(page).to have_content("Sign Out")
+end
+
 Then(/^I should see a welcome message$/) do
   expect(page).to have_content("Welcome ecomba!")
 end

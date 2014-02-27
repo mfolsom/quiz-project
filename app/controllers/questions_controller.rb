@@ -14,8 +14,12 @@ class QuestionsController < ApplicationController
   end
 
   def generate_question
-    @question = Question.random
-    render :show
+    if session[:user_id]
+      @question = Question.random
+      render :show
+    else
+      render 'users/sign_in'
+    end
   end
 
   def new
