@@ -15,8 +15,12 @@ class QuestionsController < ApplicationController
 
   def generate_question
     if session[:user_id]
-      @question = Question.random
-      render :show
+      @question = Question.generate_for(User.find(session[:user_id]))
+      if @question
+        render :show
+      else
+        render :index
+      end
     else
       render 'users/sign_in'
     end

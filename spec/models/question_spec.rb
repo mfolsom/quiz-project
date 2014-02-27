@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Question do
   it "should be able to generate a random question" do
     expect(Question).to receive(:order).with("RANDOM()").and_return([Question.first])
-    expect(Question.random).to eq(Question.first)
+    expect(Question.generate_for("Eric")).to eq(Question.first)
   end
 
   it "should know who it's author is" do
