@@ -16,6 +16,7 @@ Scenario: seeing a second question
   When I click "Next"
   Then I should be on the homepage
 
+  @twice_random
   Scenario: seeing a new question
   Given I have already signed up
   And I complete a question

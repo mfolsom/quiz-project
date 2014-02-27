@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate, only: [:generate_question]
 
   def show
     @question = Question.find(params[:id])
@@ -12,17 +13,13 @@ class QuestionsController < ApplicationController
     end
     @question = Question.find(params[:id])
   end
-
+   
   def generate_question
-    if session[:user_id]
-      @question = Question.generate_for(User.find(session[:user_id]))
-      if @question
-        render :show
-      else
-        render :index
-      end
+    @question = Question.generate_for(User.find(session[:user_id]))
+    if @question
+      render :show
     else
-      render 'users/sign_in'
+      render :index
     end
   end
 
@@ -43,6 +40,13 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:text, :answer)
+  end
+
+  def authenticate
+    unless session[:user_id]
+      # redirect_to sign_in_path
+      render 'users/sign_in'
+    end
   end
 
 end

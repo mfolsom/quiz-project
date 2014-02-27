@@ -3,15 +3,15 @@ class Question < ActiveRecord::Base
 
   def self.generate_for(user)
     random_questions = self.order("RANDOM()")
-    random_questions.each do |question|
-      @generated_question = question
-      break unless question.user == user
-      @generated_question = nil
-    end
-    @generated_question
+    filter(random_questions, user)
   end
 
   def author
     self.user.username
+  end
+
+  def self.filter(random_questions, user)
+    possible_questions = random_questions.select {|question| question.user != user}
+    possible_questions.empty? ? nil : possible_questions.first
   end
 end
