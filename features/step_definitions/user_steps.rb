@@ -2,6 +2,10 @@ Given(/^I am on the sign up page$/) do
   visit new_user_path
 end
 
+Given(/^I am on the sign in page$/) do
+  visit sign_in_path
+end
+
 When(/^I fill in the the sign up form$/) do
   fill_in("user[username]", with: "ecomba")
   fill_in("user[email]",    with: "ecomba@makersacademy.com")
@@ -38,7 +42,7 @@ Then(/^I should be on the sign up page$/) do
   expect(current_path).to eq(new_user_path)
 end
 
-Given(/^I have already signed up with (?:a username|an email address)$/) do
+Given(/^I have already signed up(?: with a username| with an email address|)$/) do
   visit new_user_path
   fill_in("user[username]", with: "ecomba")
   fill_in("user[email]",    with: "ecomba@makersacademy.com")
@@ -91,5 +95,23 @@ When(/^I submit the sign up form without a username$/) do
   click_button("Sign Up")
 end
 
+When(/^I fill in my details$/) do
+  fill_in("username", with: "ecomba")
+  fill_in("password", with: "s3cr3t")
+end
+
+When(/^I fill in my details with an invalid password$/) do
+   fill_in("username", with: "ecomba")
+   fill_in("password", with: "secret")
+end
+
+When(/^I fill in my details with an invalid username$/) do
+  fill_in("username", with: "riepenhausen")
+  fill_in("password", with: "s3cr3t")
+end
+
+Then(/^I should be on the sign in page$/) do
+   expect(current_path).to eq(sign_in_path)
+end
 
 
