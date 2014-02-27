@@ -23,7 +23,9 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    Question.create(question_params)
+    question = Question.new(question_params)
+    question.user = User.find(session[:user_id]) if session[:user_id]
+    question.save
     redirect_to root_url, notice: "Question added!"
   end
 

@@ -49,7 +49,22 @@ Given(/^I fill in the form$/) do
   choose('question_answer_false')
 end
 
+When(/^I create a question$/) do
+  visit new_question_path
+  fill_in("question[text]", :with => "Is a bushel a unit of measure?")
+  choose('question_answer_false')
+end
+
 Then(/^the question should be in the database$/) do
   @new_question = Question.find_by(text: "Is a bushel a unit of measure?")
   expect(@new_question.answer).to be_false
+end
+
+Then(/^I should be the author of that question$/) do
+  question = Question.find_by(text: "Is a bushel a unit of measure?")
+  expect(question.author).to eq("ecomba")
+end
+
+Then(/^I should see "(.*?)""$/) do |content|
+  expect(page).to have_content(content)
 end

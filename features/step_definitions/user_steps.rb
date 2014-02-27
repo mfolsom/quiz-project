@@ -51,6 +51,13 @@ Given(/^I have already signed up(?: with a username| with an email address|)$/) 
   click_button("Sign Up")
 end
 
+Given(/^I am signed in$/) do
+  visit sign_in_path
+  fill_in("username", with: "ecomba")
+  fill_in("password", with: "s3cr3t")
+  click_button("Sign In")
+end
+
 When(/^another user tries to sign up with that username again$/) do
   visit new_user_path
   fill_in("user[username]", with: "ecomba")
