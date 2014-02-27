@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :questions, dependent: :destroy
 
+  def ask_question(options)
+    Question.create(options.merge(user: self))
+  end
 end
