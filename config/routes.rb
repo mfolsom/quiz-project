@@ -7,6 +7,7 @@ QuizProject::Application.routes.draw do
 
   get '/login' => 'users#sign_in', as: :sign_in
   post '/login' => 'sessions#create', as: :new_session
+  delete '/sign_out' =>'sessions#destroy', as: :sign_out
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

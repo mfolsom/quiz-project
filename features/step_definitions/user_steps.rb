@@ -121,4 +121,16 @@ Then(/^I should be on the sign in page$/) do
    expect(current_path).to eq(sign_in_path)
 end
 
+Given(/^I have already signed in$/) do
+  visit sign_in_path
+  fill_in("username", with: "ecomba")
+  fill_in("password", with: "s3cr3t")
+  click_button("Sign In")
+end
+
+Then(/^I should not see a welcome message$/) do
+  expect(page).not_to have_content("Welcome ecomba!")
+  expect(page).not_to have_content("Sign Out")
+end
+
 
