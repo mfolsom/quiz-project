@@ -83,3 +83,15 @@ end
 Given(/^there are no questions in the database$/) do
   Question.destroy_all
 end
+
+When(/^I answer a question$/) do
+ visit question_path(1)
+ click_button("True")
+end
+
+Then(/^my answer should be tracked in the database$/) do
+  answer = Answer.first
+  expect(answer.user.username).to eq("ecomba")
+  expect(answer.question.id).to eq(1)
+  expect(answer.user.answers.first.user_answer).to be_true
+end

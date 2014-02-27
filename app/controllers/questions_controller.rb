@@ -6,12 +6,11 @@ class QuestionsController < ApplicationController
   end
 
   def show_result
-    if params[:True]
-      @user_answer = true
-    elsif params[:False]
-      @user_answer = false
-    end
+    user = User.find(session[:user_id])
     @question = Question.find(params[:id])
+    @user_answer = true if params[:True]
+    @user_answer = false if params[:False]   
+    Answer.create(user_answer: @user_answer, user: user, question: @question)
   end
    
   def generate_question
@@ -40,6 +39,10 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:text, :answer)
+  end
+
+  def answer_params
+    params.require(:True,:False)
   end
 
   def authenticate

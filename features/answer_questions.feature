@@ -9,11 +9,19 @@ Feature: Answering questions
     Then I should see "Is the sky blue?"
 
   Scenario: Answering a question correctly
-    Given I am on the page for the blue sky question
+    Given I have already signed up
+    And I am on the page for the blue sky question
     When I press "True"
     Then I should see "Correct"
 
   Scenario: Answering a question incorrectly
-    Given I am on the page for the blue sky question
+    Given I have already signed up
+    And I am on the page for the blue sky question
     When I press "False"
     Then I should see "Incorrect"
+
+   Scenario: Tracking an answered question
+     Given I have already signed up
+     When I answer a question
+     Then my answer should be tracked in the database
+

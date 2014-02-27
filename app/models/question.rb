@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :user
+  has_many :answers, dependent: :destroy
 
   def self.generate_for(user)
     random_questions = self.order("RANDOM()")
@@ -14,4 +15,5 @@ class Question < ActiveRecord::Base
     possible_questions = random_questions.select {|question| question.user != user}
     possible_questions.empty? ? nil : possible_questions.first
   end
+
 end
