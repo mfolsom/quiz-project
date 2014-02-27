@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :password, :on => :create
 
+  has_many :questions, dependent: :destroy
+
 end
