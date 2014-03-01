@@ -1,3 +1,4 @@
 <% content_for :body_class, "body-stats" %>
 <h1>Stats</h1>
 <p>There are <span class="questions-count"><%= Question.all.count %></span> questions</p>
+<p>The hardest question is: <span class="difficult question"><%= @hardest_question.text %></span></p>

@@ -7,3 +7,9 @@ Feature: Statistics
     Given I have already signed up
     When I am on the statistics page
     Then I should see the number of questions
+
+  Scenario: Hardest question
+    Given I have already signed up
+    And there are a number of other users who have answered questions
+    When I am on the statistics page
+    Then I should see the hardest question
