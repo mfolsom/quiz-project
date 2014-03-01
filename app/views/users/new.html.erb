@@ -1,7 +1,8 @@
+<% content_for :body_class, "body-sign-up" %>
 <%= form_for @user, url: {action: "create"} do |f| %>
-  <%= f.text_field     :username %>
-  <%= f.text_field     :email %>
-  <%= f.password_field :password %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "Sign Up" %>
+  <%= f.text_field     :username, placeholder: 'Username' %>
+  <%= f.text_field     :email, placeholder: 'Email' %>
+  <%= f.password_field :password , placeholder: 'Password' %>
+  <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %>
+  <%= f.submit "Sign Up", class: 'button' %>
 <% end %>
