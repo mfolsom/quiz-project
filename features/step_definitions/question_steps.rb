@@ -89,7 +89,7 @@ Given(/^there is only one question in the database$/) do
   Question.create(text: 'Is the sky blue?', answer: true)
 end
 
-When(/^I answer a question$/) do
+When(/^I (?:answer|have answered) a question$/) do
  visit question_path(1)
  click_button("True")
 end
@@ -105,4 +105,18 @@ Then(/^my answer should be tracked in the database$/) do
   expect(answer.user.username).to eq("ecomba")
   expect(answer.question.id).to eq(1)
   expect(answer.user.answers.first.user_answer).to be_true
+end
+
+When(/^I go to my profile$/) do
+  user_id = User.find_by_username('ecomba').id
+  visit user_path(user_id)
+end
+
+Then(/^I should see my username$/) do
+  expect(page).to have_content('Ecomba')
+end
+
+Then(/^I should see my score$/) do
+  expect(page).to have_content('Score:')
+  expect(page).to have_content('100%')
 end

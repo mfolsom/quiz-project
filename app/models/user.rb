@@ -17,4 +17,11 @@ class User < ActiveRecord::Base
   def ask_question(options)
     Question.create(options.merge(user: self))
   end
+
+  def score
+    groups = answers.partition { |answer| answer.correct? }
+    decimal = groups[0].count.to_f / answers.count
+    percentage = decimal * 100
+    percentage.to_i
+  end
 end

@@ -22,4 +22,4 @@ Feature: Add Question
     And I press "Create"
     When I am on the homepage
     Then I should not see "Is a bushel a unit of measure?"
-    And I should see "No questions yet, sorry."
+    And I should see "No more questions, sorry."
