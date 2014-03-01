@@ -16,7 +16,7 @@
     <ul class="user-links left">
       <%if current_user %>    
         <li><%= link_to "#{current_user.username}'s Profile", user_path(current_user.id) %></li>
-        <li><a href="#">Stats</a></li>
+        <li><%= link_to "Stats", stats_path %></li>
       <% else %>
         <li><%= link_to "Sign In", sign_in_path %></li>
       <% end %>

@@ -1,4 +1,5 @@
 QuizProject::Application.routes.draw do
+  get "statistics/index"
   resources :users
   resources :questions
   root 'questions#generate_question'
@@ -7,7 +8,8 @@ QuizProject::Application.routes.draw do
 
   get '/login' => 'users#sign_in', as: :sign_in
   post '/login' => 'sessions#create', as: :new_session
-  delete '/sign_out' =>'sessions#destroy', as: :sign_out
+  delete '/sign_out' => 'sessions#destroy', as: :sign_out
+  get "statistics/index" => 'statistics#index', as: :stats
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
