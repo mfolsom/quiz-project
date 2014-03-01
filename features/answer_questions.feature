@@ -29,5 +29,5 @@ Feature: Answering questions
     Given I have already signed up
     And there is only one question in the database
     When I answer that question
-    Then I should see "No questions yet, sorry."
+    Then I should see "No more questions, sorry."
 
