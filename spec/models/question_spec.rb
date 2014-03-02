@@ -17,7 +17,7 @@ describe Question do
     ans1 = Answer.new
     ans2 = Answer.new
     question = Question.new(text: 'Is the sky blue?', answer: true, user: author)
-    expect(question).to receive(:answers).twice.and_return([ans1, ans2])
+    expect(question).to receive(:answers).exactly(3).times.and_return([ans1, ans2])
     expect(ans1).to receive(:correct?).and_return(true)
     expect(ans2).to receive(:correct?).and_return(false)
     expect(question.difficulty).to eq(50)
