@@ -19,3 +19,9 @@ Feature: Statistics
     And all the questions have been answered by other users
     When I am on the statistics page
     Then I should see the easiest question
+
+  Scenario: List of users
+    Given I have already signed up
+    And I, and some other people, have answered a lot of questions
+    When I am on the statistics page
+    Then I should see the list of users

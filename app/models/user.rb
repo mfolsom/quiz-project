@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def score
+    return nil if answers.empty?
     groups = answers.partition { |answer| answer.correct? }
     decimal = groups[0].count.to_f / answers.count
     percentage = decimal * 100

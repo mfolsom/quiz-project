@@ -21,7 +21,7 @@ class Question < ActiveRecord::Base
   end
 
   def difficulty
-    return 100 if answers.empty?
+    return nil if answers.empty?
     groups = answers.partition { |ans| ans.correct? }
     decimal = groups[0].count.to_f / answers.count
     percentage = decimal * 100

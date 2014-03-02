@@ -68,4 +68,26 @@
   hr:first-of-type {
     margin-top: 0;
   }
+  
+  table {
+    display: inline-block;
+    margin-top: 2em;
+    
+    td {
+      font-size: 3em;
+      padding-right: 2em;
+      text-align: left;
+      
+      &:first-child {
+        font-size: 2em;
+        font-family: sans-serif;
+        opacity: 0.6;
+        padding-right: 1em;
+      }
+      
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
 }
