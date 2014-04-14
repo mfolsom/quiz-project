@@ -1,0 +1,27 @@
+<% content_for :body_class, "body-stats" %>
+<p>There are <span class="questions-count"><%= Question.all.count %></span> questions</p>
+<hr />
+<% if @hardest_question %>
+  <p>The hardest question is:</p>
+  <p class="difficult-question"><span><%= @hardest_question.text %></span></p>
+  <p>Which was only answered successfully <span class="question-difficulty"><%= @hardest_question.difficulty %>%</span> of the time</p>
+  <hr />
+<% end %>
+<% if @easiest_question %>
+  <p>The easiest question is:</p>
+  <p class="difficult-question"><span><%= @easiest_question.text %></p></span>
+  <p>Which was answered successfully <span class="question-difficulty"><%= @easiest_question.difficulty %>%</span> of the time</p>
+  <hr />
+<% end %>
+<p>Top Scores</p>
+<table>
+  <% @users.each_with_index do |user, index| %>
+  <tr>
+    <td><%= index + 1 %></td>
+    <td><%= user.username %></td>
+    <td><%= user.score %>%</td>
+  </tr>
+  <% end %>
+</table>
+<hr />
+<p>That's all we've got for now</p>

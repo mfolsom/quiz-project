@@ -1,6 +1,8 @@
 <% if @user_answer == @question.answer %>
-  <p>Correct!</p>
+  <% content_for :body_class, "body-result body-correct" %>
+  <p class="result_text">Correct!</p>
 <% else %>
-  <p>Incorrect</p>
+  <% content_for :body_class, "body-result body-incorrect" %>
+  <p class="result_text">Incorrect</p>
 <% end %>
-<a href="/">Next</a>
+<a href="/" class="button button-next">Next</a>

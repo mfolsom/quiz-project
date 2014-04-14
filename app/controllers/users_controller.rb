@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      session[:user_id] = user.id
       redirect_to root_path, notice: "Welcome #{user.username}!"
     else
       redirect_to new_user_path, error: user.errors.keys[0].to_s.capitalize.gsub('_', ' ') + ' ' + user.errors.values[0][0]
@@ -13,7 +14,10 @@ class UsersController < ApplicationController
   end
 
   def sign_in
+  end
 
+  def show
+    @user = User.find(params[:id])
   end
 
   private

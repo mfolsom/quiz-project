@@ -68,3 +68,55 @@ end
 Then(/^I should see "(.*?)""$/) do |content|
   expect(page).to have_content(content)
 end
+
+Then(/^I should not see "(.*?)"$/) do |content|
+  expect(page).not_to have_content(content)
+end
+
+Given(/^I am not logged in$/) do
+end
+
+Then(/^I should not see any questions$/) do
+  expect(page).not_to have_content("?")
+end
+
+Given(/^there are no questions in the database$/) do
+  Question.destroy_all
+end
+
+Given(/^there is only one question in the database$/) do
+  Question.destroy_all
+  Question.create(text: 'Is the sky blue?', answer: true)
+end
+
+When(/^I (?:answer|have answered) a question$/) do
+ visit question_path(1)
+ click_button("True")
+end
+
+When(/^I answer that question$/) do
+  visit '/'
+  click_button("True")
+  click_link("Next")
+end
+
+Then(/^my answer should be tracked in the database$/) do
+  answer = Answer.first
+  expect(answer.user.username).to eq("ecomba")
+  expect(answer.question.id).to eq(1)
+  expect(answer.user.answers.first.user_answer).to be_true
+end
+
+When(/^I go to my profile$/) do
+  user_id = User.find_by_username('ecomba').id
+  visit user_path(user_id)
+end
+
+Then(/^I should see my username$/) do
+  expect(page).to have_content('Ecomba')
+end
+
+Then(/^I should see my score$/) do
+  expect(page).to have_content('Score:')
+  expect(page).to have_content('100%')
+end

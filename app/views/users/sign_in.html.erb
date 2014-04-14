@@ -1,5 +1,6 @@
+<% content_for :body_class, "body-sign-in" %>
 <%= form_tag(new_session_path, method: "post") do %>
-  <%= text_field_tag :username %>
-  <%= password_field_tag :password %>
-  <%= button_tag "Sign In" %>
+  <%= text_field_tag :username, nil, placeholder: 'Username' %>
+  <%= password_field_tag :password, nil, placeholder: 'Password' %>
+  <%= button_tag "Sign In", class: 'button' %>
 <% end %>

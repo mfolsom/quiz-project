@@ -1,0 +1,4 @@
+<% content_for :body_class, "body-profile" %>
+<h1><%= @user.username.capitalize %></h1>
+<span class="score-title">Score:</span>
+<span class="score"><%= @user.score %>%</span>

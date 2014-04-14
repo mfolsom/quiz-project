@@ -14,3 +14,12 @@ Feature: Add Question
     When I create a question
     And I press "Create"
     Then I should be the author of that question
+
+  Scenario: not seeing a created question
+    Given I have already signed up
+    And there are no questions in the database
+    And I create a question
+    And I press "Create"
+    When I am on the homepage
+    Then I should not see "Is a bushel a unit of measure?"
+    And I should see "No more questions, sorry."

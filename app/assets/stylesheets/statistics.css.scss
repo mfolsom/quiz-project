@@ -1,0 +1,93 @@
+// Place all the styles related to the statistics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.body-stats {
+  background-color: #4b135c;
+  text-align: center;
+  color: #fff;
+  
+  h1 {
+    font-size: 3em;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+  }
+  
+  p {
+    font-family: sans-serif;
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.63);
+  }
+  
+  p:last-of-type {
+    margin-bottom: 4em;
+  }
+  
+  p:first-of-type {
+    margin-top: 2em;
+  }
+  
+  .questions-count {
+    font-family: serif;
+    font-size: 6em;
+    color: #fff;
+    vertical-align: text-top;
+    font-style: italic;
+    margin-left: 0.07em;
+    margin-right: 0.16em;
+    position: relative;
+    top: -0.15em;
+  }
+  
+  .difficult-question {
+    margin-top: 0.5em;
+    margin-bottom: 0.75em;
+  }
+  
+  .difficult-question span {
+    color: #fff;
+    font-family: serif;
+    font-size: 3em;
+    font-style: italic;
+    font-weight: 500;
+  }
+  
+  .question-difficulty {
+    font-style: italic;
+    font-family: serif;
+    color: #fff;
+  }
+  
+  hr {
+    margin-bottom: 3em;
+    margin-top: 3em;
+    width: 90%;
+    opacity: 0.6;
+  }
+  
+  hr:first-of-type {
+    margin-top: 0;
+  }
+  
+  table {
+    display: inline-block;
+    margin-top: 2em;
+    
+    td {
+      font-size: 3em;
+      padding-right: 2em;
+      text-align: left;
+      
+      &:first-child {
+        font-size: 2em;
+        font-family: sans-serif;
+        opacity: 0.6;
+        padding-right: 1em;
+      }
+      
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}

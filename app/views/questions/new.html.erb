@@ -1,9 +1,9 @@
-
-<%= form_for @question, url: {action: "create"} do |f| %>
-  <%= f.text_area :text %>
-  <%= f.radio_button(:answer, "true") %>
-  <%= f.label(:answer_true, "True") %>
+<% content_for :body_class, "body-new-question" %>
+<%= form_for @question, url: {action: "create"}, html: {class: 'new-question-form'} do |f| %>
+  <%= f.text_area :text, rows: 4, placeholder: 'What do you want to ask?' %>
+  <%= f.radio_button(:answer, "true", checked: 'checked') %>
+  <%= f.label(:answer_true, "True", class: 'button button-true') %>
   <%= f.radio_button(:answer, "false") %>
-  <%= f.label(:answer_false, "False") %>
-  <%= f.submit "Create" %> 
+  <%= f.label(:answer_false, "False", class: 'button button-false') %>
+  <%= f.submit "Create", class: 'button button-create' %> 
 <% end %>

@@ -5,6 +5,7 @@ Feature: User signs up
     When I fill in the the sign up form
     And press "Sign Up"
     Then I should be signed up
+    And I should be signed in
     And I should be on the homepage
     And I should see a welcome message
 

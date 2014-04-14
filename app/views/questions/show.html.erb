@@ -1,6 +1,7 @@
-<p><%= @question.text %></p>
+<% content_for :body_class, "body-question" %>
+<p class="question-text"><%= @question.text %></p>
 <%= form_tag(show_result_path(@question)) do %>
 <!-- <form method="post" action="/questions/<%= @question.id %>/result"> -->
-  <input type="submit" name="True" value="True" />
-  <input type="submit" name="False" value="False" />
+  <input type="submit" class="button button-true" name="True" value="True" />
+  <input type="submit" class="button button-false" name="False" value="False" />
 <% end %>
